@@ -30,3 +30,13 @@ function git_url_go ()
         printf "  Did not open URL\n"
     done
 }
+
+function git_show_ignored ()
+{
+    declare tc_tab
+    printf -v tc_tab '\t'
+    git ls-files --others |
+        git check-ignore --verbose --stdin |
+        sed "s/:/${tc_tab}/;s/:/${tc_tab}/" |
+        { [ -t 1 ] && column -ts"${tc_tab}" || cat -; }
+}
