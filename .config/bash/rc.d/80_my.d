@@ -1,1 +1,1 @@
-../../../.my.d/.src/my/vcsh-bash.git/.config/bash/rc.d
+../../../.src/my.d/vcsh-bash.git/.config/bash/rc.d
