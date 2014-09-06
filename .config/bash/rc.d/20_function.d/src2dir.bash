@@ -25,10 +25,10 @@ function src2dir ()
 
     fnc="${FUNCNAME}"
 
-    src_repo="${SRC2DIR_REPO:-${MY_SOURCES_DIR:-}}"
+    src_repo="${SRC2DIR_REPO:-${HOME}/.src}"
     [ -d "${src_repo}/." -a -n "${src_repo}" ] || {
         printf "${fnc}: %s\n" \
-                "Could not find source target directory environment variable SRC2DIR_REPO or MY_SOURCES_DIR"
+                "Could not find source target directory environment variable SRC2DIR_REPO or { ~/.src }"
         return 9
     }
 
