@@ -1,1 +1,7 @@
-*
+/*
+!/.config/
+/.config/*
+!/.config/bash/
+OFF/
+*.my.bash
+*.my.d
