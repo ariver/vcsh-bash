@@ -73,8 +73,8 @@ function bash_path_update ()
         do
             old="${BASH_REMATCH[1]%:}:${BASH_REMATCH[2]#:}"
         done
-        # and, of course, don't add it back if it isn't a directory.
-        [ -d "${arg}/." ] || continue
+        ## and, of course, don't add it back if it isn't a directory.
+        #[ -d "${arg}/." ] || continue
         new="${new}${arg}:"
     done
 
@@ -88,8 +88,8 @@ function bash_path_update ()
         do
             new="${BASH_REMATCH[1]%:}:${BASH_REMATCH[2]#:}"
         done
-        # and, of course, don't add it back if it isn't a directory.
-        [ -d "${arg}/." ] || continue
+        ## and, of course, don't add it back if it isn't a directory.
+        #[ -d "${arg}/." ] || continue
         new="${new}:${arg}"
     done
 
