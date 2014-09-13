@@ -1,30 +1,14 @@
 #! /dev/null/bash
 
-function ___tmp ()
-{
+set -a
 
-    declare vars var
+# Use UTF8
+LC_ALL='en_US.UTF-8'
+LC_CTYPE="${LC_ALL}"
+LC_MESSAGES="${LC_ALL}"
+LC_NUMERIC="${LC_ALL}"
 
-    vars=(
-        LC_ALL
-        LC_COLLATE
-        LC_CTYPE
-        LC_MESSAGES
-        LC_NUMERIC
-    )
+# Force distinction of case in sort/glob.
+LC_COLLATE='C'
 
-    export ${vars[*]}
-
-    # Use UTF8
-    for var in "${vars[@]}"
-    do
-        printf -v var '%s="%s"' "${var}" "en_US.UTF-8"
-        eval "${var}"
-    done
-
-    # Force distinction of case in sort/glob.
-    LC_COLLATE=C
-
-}
-___tmp 1>&2
-unset -f ___tmp
+set +a
