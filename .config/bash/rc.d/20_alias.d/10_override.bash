@@ -1,8 +1,14 @@
 #! /dev/null/bash
 
 # Color for listings
-alias ls='ls -G'
-alias gls='gls --color=auto'
+if [[ "${OSTYPE}" == darwin* ]]
+then
+    alias ls='ls -G'
+    alias gls='gls --color=auto'
+else
+    alias ls='ls --color=auto'
+    alias gls='ls'
+fi
 
 # ( Don't let me be passively stupid. )
 alias cp='cp -i'

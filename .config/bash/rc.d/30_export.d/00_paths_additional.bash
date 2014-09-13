@@ -1,8 +1,5 @@
 #! /dev/null/bash
 
-# Ensure default PATH/MANPATH
-eval "$( PATH= MANPATH= /usr/libexec/path_helper -s )"
-
 # Prefix alternatives path, append my own paths.
 bash_path_update \
         ~/.opt/alternators/{,s}bin \

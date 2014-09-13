@@ -1,16 +1,10 @@
 #! /dev/null/bash
 
-#
-## Setup TMPDIR
-#
-export TMPDIR
+set -a
 
-# Verify (and possibly update/create) temporary directory.
+if [[ "${OSTYPE}" != darwin* ]]
+then
 TMPDIR="${TMPDIR:-${HOME}/.tmp}"
-[ -d "${TMPDIR}/." ] || mkdir -p "${TMPDIR}"
-[ -d "${TMPDIR}/." ] && {
-    chown -h "${USER:-${LOGNAME:-${USERNAME}}}" "${TMPDIR}/."
-    chmod -h go-rwx "${TMPDIR}/."
-} || {
-    echo "Could not create/verify TMPDIR { ${TMPDIR} }!"
-}
+fi
+
+set +a
