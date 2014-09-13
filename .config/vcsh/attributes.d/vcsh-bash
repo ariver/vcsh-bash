@@ -1,2 +1,4 @@
 #pattern        filter=crypt    diff=crypt
-99_ugly.bash    filter=crypt    diff=crypt
+*_ugly.bash     filter=crypt    diff=crypt
+*_sekrets.bash  filter=crypt    diff=crypt
+*_secrets.bash  filter=crypt    diff=crypt
