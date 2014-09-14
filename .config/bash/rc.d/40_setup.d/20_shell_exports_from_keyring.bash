@@ -5,25 +5,34 @@ ___tmp ()
 {
 
     declare keyring_exports=(
-        EMAIL
-        MAILDIR
         GIT_HUB_API_TOKEN
         HOMEBREW_GITHUB_API_TOKEN
-        GITHUB_HOME_BASE_DIR
-        GITHUB_WORK_BASE_DIR
+        EMAIL
+        MAILDIR
+        HOME_SRC_DIR
+        HOME_SRC_GITHUB_DIR
+        HOME_SRC_GITHUB_MY_DIR
+        HOME_SRC_GITHUB_WORK_DIR
+        HOME_SRC_GITHUB_WORK_MY_DIR
     )
     export ${keyring_exports[*]}
 
-    declare vars=( I J )
+    declare vars=( I J err_string )
     declare ${vars[*]}
+
+    err_string=":ERR:${BASH_SOURCE}:${FUNCNAME}:${LINENO}:${SECONDS}:${RANDOM}"
 
     for I in ${keyring_exports[*]}
     do
-        J="$( keyring get bash export:${I} )" || continue
-        printf -v "${I}" %s "${J}"
+        J="$( keyring get shell export:${I} || echo "${err_string}" )"
+        [ "${J}" != "${err_string}" ] || {
+            printf 'Not Found: Keyring entry for ( %s )\n' "${I}"
+            continue
+        }
+        eval printf -v "${I}" %s "${J}"
     done
 
-    declare -p ${keyring_exports[*]}
+    #declare -p ${keyring_exports[*]}; sleep 0.2
 
 }
 ___tmp 1>&2
