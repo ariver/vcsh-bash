@@ -189,31 +189,26 @@ function ___bash_config_show ()
 
         : ${___BASH_CONFIG_SHOW_1ST:=${src}}
 
-        if [ "${flg_silent}" -eq 0 ]
+        [ "${flg_silent}" -ne 0 ] || cmd_show=( time )
+
+        if [ "${src}" == "${___BASH_CONFIG_SHOW_1ST}" ]
         then
-
-            cmd_show=( time )
-
-            if [ "${src}" == "${___BASH_CONFIG_SHOW_1ST}" ]
-            then
-                TIMEFORMAT=' RT  UT  ST'
-                tag='SRC'
-                pad_chr="="
-            else
-                TIMEFORMAT='%1R %1U %1S'
-                tag="${src#${___BASH_CONFIG_SHOW_1ST}/}"
-                tag="${tag%.bash}"
-                tag="${tag//\// }"
-            fi
-
-            pad="$(( ___BASH_CONFIG_SHOW_MAX - ${#tag} - 17 ))"
-            printf -v pad '%0*d' "${pad}"
-            pad="${pad//0/${pad_chr}}"
-
-            printf -v TIMEFORMAT -- ' %s %s %s %s' "${pad_chr}" "${tag}" "${pad}" "${TIMEFORMAT}"
-            ___BASH_CONFIG_SHOW_TAG="${tag}"
-
+            TIMEFORMAT=' RT  UT  ST'
+            tag='SRC'
+            pad_chr="="
+        else
+            TIMEFORMAT='%1R %1U %1S'
+            tag="${src#${___BASH_CONFIG_SHOW_1ST}/}"
+            tag="${tag%.bash}"
+            tag="${tag//\// }"
         fi
+
+        pad="$(( ___BASH_CONFIG_SHOW_MAX - ${#tag} - 17 ))"
+        printf -v pad '%0*d' "${pad}"
+        pad="${pad//0/${pad_chr}}"
+
+        printf -v TIMEFORMAT -- ' %s %s %s %s' "${pad_chr}" "${tag}" "${pad}" "${TIMEFORMAT}"
+        ___BASH_CONFIG_SHOW_TAG="${tag}"
 
     fi
 
