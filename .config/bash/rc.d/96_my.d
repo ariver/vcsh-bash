@@ -1,1 +1,0 @@
-../../../.src/my.d/vcsh-bash.git/.config/bash/rc.d/80_my.d
