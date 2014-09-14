@@ -15,7 +15,7 @@ LS_COLWIDTHS="0:0:0:0:0:0:0:0"
 # Solarized Colors for GNU ( ls )
 { type -t gdircolors || type -t dircolors; } >/dev/null
 [ "${?}" -ne 0 ] || {
-    I="${GITHUB_HOME_BASE_DIR}/seebi/dircolors-solarized.git/dircolors.ansi-universal"
+    I="${HOME_SRC_GITHUB_DIR}/seebi/dircolors-solarized.git/dircolors.ansi-universal"
     [ ! -r "${I}" ] || eval "$( gdircolors "${I}" )"
     unset I
 }

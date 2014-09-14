@@ -1,5 +1,5 @@
 #! /dev/null/bash
 
-. "${GITHUB_HOME_BASE_DIR}/runsthruit/histerical.git/histerical.bash" || return 1
+. "${HOME_SRC_GITHUB_DIR}/runsthruit/histerical.git/histerical.bash"
 
 hist_pull 7
