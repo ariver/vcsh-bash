@@ -9,6 +9,7 @@ ___tmp ()
         HOMEBREW_GITHUB_API_TOKEN
         EMAIL
         MAILDIR
+        SSH_ID_RSA_LOAD
         HOME_SRC_DIR
         HOME_SRC_GITHUB_DIR
         HOME_SRC_GITHUB_MY_DIR
