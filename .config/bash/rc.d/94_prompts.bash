@@ -6,8 +6,6 @@ PS1_BAK="${PS1_BAK:-${PS1}}"
 PS1='\$ '
 PS4='+${BASH_SOURCE}+${FUNCNAME}+ '
 
-. /usr/local/etc/bash_completion.d/git-prompt.sh
-
 COLORFCBC="12;8"
 
 PROMPT_COMMAND=bash_profile_prompt_command
@@ -57,7 +55,7 @@ function bash_profile_prompt_command ()
 
     raw_pwd="${PWD}"
     raw__py="${VIRTUAL_ENV}"
-    raw_git="$( __git_ps1 %s )"
+    raw_git="$( __git_ps1 %s 2>/dev/null || printf _NO_GIT_PS1 )"
 
     printf -v tc_tab    "\t"
     printf -v tc_nln    "\n"
