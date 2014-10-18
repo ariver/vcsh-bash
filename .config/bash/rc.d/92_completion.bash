@@ -26,7 +26,7 @@ function ___tmp ()
         brewl                                   -F  _brew_list
         "brewi brewh"                           -F  _brew_info
         "$( compgen -c ssh.sso )"               -F  _ssh
-        keystone                                -W  "$( keystone bash-completion )"
+#        keystone                                -W  "$( keystone bash-completion )"
     )
 
     for (( I=0; I<${#comp_ents[@]}; I+=3 ))
