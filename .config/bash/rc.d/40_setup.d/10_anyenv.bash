@@ -1,5 +1,7 @@
 #! /bin/bash
 
+return # trying system defaults for a while, to sort out issues with homebrew/weechat and pyenv.
+
 function anyenv_load ()
 {
 
@@ -32,6 +34,8 @@ function anyenv_load ()
 
     for ent in "${ents[@]}"
     do
+        ver="$( { "${ent}" version; } 2>/dev/null )"
+        [[ "${ver}" != system\ * ]] || continue
         case "${ent}" in
         ( "pyenv" ) {
             dir="$( { "${ent}" virtualenv-prefix || "${ent}" prefix; } 2>/dev/null )"
