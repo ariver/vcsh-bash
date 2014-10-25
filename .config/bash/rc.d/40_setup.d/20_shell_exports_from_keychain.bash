@@ -7,7 +7,7 @@ ___tmp ()
     declare keychain_exports=(
         GIT_HUB_API_TOKEN
         HOMEBREW_GITHUB_API_TOKEN
-#        EMAIL
+        EMAIL
         MAILDIR
         SSH_ID_RSA_LOAD
 #        HOME_SRC_DIR
