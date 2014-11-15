@@ -1,11 +1,14 @@
 #! /dev/null/bash
 
-. "$( brew --prefix )/etc/profile.d/bash_completion.sh"
+return
+
+___tmp="$( brew --prefix )/etc/profile.d/bash_completion.sh"
+[ ! -e "${___tmp}" ] || . "${___tmp}" ]
+unset ___tmp
 
 # function _pip_completion
-eval "$( pip completion --bash )"
-
-#eval "$( printf 'function ___test1 () { printf "%s\n" "${FUNCNAME}"; }' )"
+type -t pip >/dev/null
+[ "${?}" -ne 0 ] || eval "$( pip completion --bash )"
 
 function ___tmp ()
 {
@@ -25,8 +28,7 @@ function ___tmp ()
         brews                                   -F  _brew_search
         brewl                                   -F  _brew_list
         "brewi brewh"                           -F  _brew_info
-        "$( compgen -c ssh.sso )"               -F  _ssh
-#        keystone                                -W  "$( keystone bash-completion )"
+        "$( compgen -c ssh. )"                  -F  _ssh
     )
 
     for (( I=0; I<${#comp_ents[@]}; I+=3 ))
