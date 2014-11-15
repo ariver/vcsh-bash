@@ -3,22 +3,13 @@
 function ___tmp ()
 {
 
-    export WORKON_HOME
+    export  WORKON_HOME=~/.opt/venv_py
 
-    declare vars=(
-        venvw
-    )
-    declare ${vars[*]}
-
-    WORKON_HOME=~/.opt/venv_py
-
-    venvw="$( type -p virtualenvwrapper.sh )"
+    declare venvw="$( type -p virtualenvwrapper.sh )"
 
     [ -n "${venvw}" ] || return
 
     . "${venvw}"
-
-    workon work
 
 }
 
