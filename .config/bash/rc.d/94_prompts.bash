@@ -20,6 +20,8 @@ PROMPT_COMMAND=bash_profile_prompt_command
 
 set +a
 
+. /usr/local/etc/bash_completion.d/git-prompt.sh
+
 function bash_profile_prompt_command ()
 {
 
