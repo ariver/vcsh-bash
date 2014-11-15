@@ -10,6 +10,7 @@ function bash_path_update ()
     # Dirs provided prior to the variable name get precedence.
     # Dirs provided after the variable name are pushed down.
     # Duplicate dirs will be removed.
+    #
     # And finally, not recommended when paths contain dirs on NFS,
     #   each entry is checked for existence and type before assignment.
     #
