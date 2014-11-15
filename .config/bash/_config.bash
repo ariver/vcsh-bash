@@ -199,8 +199,14 @@ function ___bash_config_show ()
         else
             TIMEFORMAT='%1R %1U %1S'
             tag="${src#${___BASH_CONFIG_SHOW_1ST}/}"
-            tag="${tag%.bash}"
-            tag="${tag//\// }"
+            if [[ "${tag}" == "${src}" ]]
+            then
+                tag="${src#${HOME}/}"
+                [[ "${tag}" == "${src}" ]] || tag='~/'"${tag}"
+            else
+                tag="${tag%.bash}"
+                tag="${tag//\// }"
+            fi
         fi
 
         pad="$(( ___BASH_CONFIG_SHOW_MAX - ${#tag} - 17 ))"
