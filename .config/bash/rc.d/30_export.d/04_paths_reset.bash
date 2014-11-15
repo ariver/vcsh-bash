@@ -1,5 +1,22 @@
 #! /dev/null/bash
 
-[ -x /usr/libexec/path_helper ] || return 1
+function ___tmp ()
+{
 
-eval "$( PATH= MANPATH= /usr/libexec/path_helper -s )"
+    declare cmd tmp
+
+    # Reset PATHs to Defaults
+    cmd='/usr/libexec/path_helper'
+    if [[ -x "${cmd}" ]]
+    then
+        eval "$( PATH= MANPATH= "${cmd}" -s )"
+    else
+        printf 'Path Helper Not Found! ( %s )\n' "${cmd}"
+        PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+        MANPATH="/usr/share/man:/usr/local/share/man"
+        export PATH MANPATH
+    fi
+
+}
+___tmp "${@}" 1>&2
+unset -f ___tmp
