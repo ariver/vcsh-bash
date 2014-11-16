@@ -1,14 +1,11 @@
 #! /dev/null/bash
 
-return
+# Load bash completions from Mac OS X Homebrew install.
+. "$( brew --prefix )/etc/profile.d/bash_completion.sh"
 
-___tmp="$( brew --prefix )/etc/profile.d/bash_completion.sh"
-[ ! -e "${___tmp}" ] || . "${___tmp}" ]
-unset ___tmp
-
+# Load completions for pip.
 # function _pip_completion
-type -t pip >/dev/null
-[ "${?}" -ne 0 ] || eval "$( pip completion --bash )"
+eval "$( pip completion --bash )"
 
 function ___tmp ()
 {
@@ -19,7 +16,7 @@ function ___tmp ()
     )
 
     comp_ents=(
-        ""                                      -A  command
+#        ""                                      -A  command
         "$( compgen -A function function )"     -A  function
         brewI                                   -F  _brew_install
         brewU                                   -F  _brew_uninstall
