@@ -25,7 +25,8 @@ function ___tmp ()
         brews                                   -F  _brew_search
         brewl                                   -F  _brew_list
         "brewi brewh"                           -F  _brew_info
-        "$( compgen -c ssh. )"                  -F  _ssh
+        "$( compgen -c ssh+ )"                  -F  _ssh
+        "$( compgen -c ssh-copy-id+ )"          -F  _ssh_copy_id
     )
 
     for (( I=0; I<${#comp_ents[@]}; I+=3 ))
